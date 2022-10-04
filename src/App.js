@@ -1,4 +1,4 @@
-
+import './style.css'
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/header';
@@ -11,7 +11,7 @@ class App extends Component {
 
   }
 
-  //CUANDO LA APLICACION CARGA
+  //Proceso para carga de app
     componentDidMount(){
       const citasLS = localStorage.getItem('citas');
       if(citasLS){
@@ -21,32 +21,32 @@ class App extends Component {
       }
     }
 
-  // CUANDO ELEMINAMOS O AGREGAMOS UNA NUEVA CITA
+  // Se crea un turno
 
   componentDidUpdate(){
     localStorage.setItem('citas', JSON.stringify(this.state.citas))
   }
 
   crearNuevaCita = datos => {
-    //COPIAR EL STATE ACTUAL
+    //State Actual
     const citas = [...this.state.citas, datos]
 
-    // AGREGAR EL NUEVO STATE
+    // Se renderiza el state
 
     this.setState({
       citas: citas
     })
   }
 
-    //ELIMINA LAS CITAS DEL STATE
+    //Elimino turnos
       eliminarCita = id =>{
-        //HACER UNA COPIA DEL STATE
+        //Copio el state
           const citasActuales = [...this.state.citas]
 
-        //UTILIZAR FILTER PARA SACAR EL ELEMENTO ID DEL ARRAY
+        //Ajustamos el arreglo
         const citas = citasActuales.filter(cita => cita.id !== id);
 
-        //ACTUALIZAR EL STATE
+        //Nuevo state
         this.setState({
           citas
         })
@@ -57,7 +57,7 @@ class App extends Component {
     return (
       <div className="container">
         <Header
-        titulo='Administrador Pacientes Veterinario'
+        titulo='Administrador Pacientes Veterinaria Florencia'
         />
         <div className="row">
           <div className="col-md-10 mx-auto">

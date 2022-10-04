@@ -18,10 +18,10 @@ const stateInicial = {
 class NuevaCita extends Component {
     state={  ...stateInicial    }
 
-    // CUANDO EL USUARIO ESCRIBE EN LOS INPUTS
+    // Inputs 
        handleChange= (e) =>{
            
-           //COLOCAR LO QUE EL USUARIO ESCRIBE EN EL STATE
+           //Renderizamos
 
            this.setState({
                cita: {
@@ -32,14 +32,14 @@ class NuevaCita extends Component {
 
         }
 
-        // CUANDO EL USUARIO ENVIA EL METODO
+        // Se envía el método
         handleSubmit = e => {
             e.preventDefault();
 
-            //EXTRAER LOS VALORES DEL STATE
+            //state nuevo
             const {mascota,propietario, fecha, hora, sintomas} = this.state.cita;
 
-            //VALIDAR QUE TODOS LOS CAMPOS ESTEN LLENOS
+            //Alguna validación...
 
             if (mascota === '' || propietario ==='' || fecha=== '' || hora === '' || sintomas === '' )
             {
@@ -48,19 +48,19 @@ class NuevaCita extends Component {
                 })
            
 
-            //DETENER LA EJECUCION
+            //Se detiene
             return;
         }
 
-        // GENERAR OBJETO CON DATOS
+        // Los datos se cargan a un objeto
 
             const nuevaCita = {...this.state.cita};
             nuevaCita.id= uuid();
 
-            //AGREGAR LA CITA AL STATE DE APP
+            //State con objeto
             this.props.crearNuevaCita(nuevaCita) 
 
-            //COLOCAR EN EL STATE EL STATEINICIALv(pra que se reinicie el formulario cada vez que se envia)
+            //Reiniciamos el form luego de enviarlo
             this.setState({
                 ...stateInicial
             })
@@ -70,7 +70,7 @@ class NuevaCita extends Component {
 
     render(){
 
-    // EXTRAER VALOR DEL STATE  
+    // Tomamos el valor del state
     
     const {error}= this.state;
 
@@ -78,7 +78,7 @@ class NuevaCita extends Component {
             <div className="card mt-5 py-5">
                 <div className="card-body">
                     <h2 className="card-title text-center mb-5">
-                        Llena el formulario para crear una nueva cita
+                        Llená el formulario para crear una nueva cita
                     </h2>
 
                     {error ? <div className="alert alert-danger mt-2 mb-5 text-center"> ¡¡Todos los campos son obligatorios!!</div> : null}
@@ -87,7 +87,7 @@ class NuevaCita extends Component {
                         onSubmit={this.handleSubmit}
                     >
                         <div className="form-group row">
-                            <label className="col-sm-4 col-lg-2 col-form-label">Nombre Mascota</label>
+                            <label className="col-sm-4 col-lg-2 col-form-label my-2">Nombre Mascota</label>
                             <div className="col-sm-8 col-lg-10">
                                 <input 
                                     type="text"
@@ -100,7 +100,7 @@ class NuevaCita extends Component {
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label className="col-sm-4 col-lg-2 col-form-label">Nombre Dueño</label>
+                            <label className="col-sm-4 col-lg-2 col-form-label my-2">Nombre Dueño</label>
                             <div className="col-sm-8 col-lg-10">
                                 <input 
                                     type="text"
@@ -114,7 +114,7 @@ class NuevaCita extends Component {
                         </div>
 
                         <div className="form-group row">
-                            <label className="col-sm-4 col-lg-2 col-form-label">Fecha</label>
+                            <label className="col-sm-4 col-lg-2 col-form-label my-2">Fecha</label>
                             <div className="col-sm-8 col-lg-4">
                                 <input 
                                     type="date"
@@ -125,7 +125,7 @@ class NuevaCita extends Component {
                                     />
                             </div>
                         
-                            <label className="col-sm-4 col-lg-2 col-form-label">Hora</label>
+                            <label className="col-sm-4 col-lg-2 col-form-label my-2">Hora</label>
                             <div className="col-sm-8 col-lg-4">
                                 <input 
                                     type="time"
@@ -138,7 +138,7 @@ class NuevaCita extends Component {
                         </div>
 
                         <div className="form-group row">
-                            <label className="col-sm-4 col-lg-2 col-form-label">Sintomas</label>
+                            <label className="col-sm-4 col-lg-2 col-form-label my-2">Sintomas</label>
                             <div className="col-sm-8 col-lg-10">
                                 <textarea
                                     type="text"
@@ -151,7 +151,7 @@ class NuevaCita extends Component {
                                 </textarea>
                             </div>
                         </div>
-                            <input type="submit" className="py-3 mt-2 btn btn-success btn-block" value="Agregar Nueva Cita"/>
+                            <input type="submit" className="py-3 mt-2 btn btn-primary btn-block" value="Agregar Nueva Cita"/>
 
                     </form>
                 </div>

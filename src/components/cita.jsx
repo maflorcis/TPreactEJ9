@@ -11,7 +11,7 @@ const Cita = ({cita, eliminarCita}) => (
             <p className="card-text">{cita.sintomas}</p>
 
             <button
-            className="btn btn-danger"
+            className="btn btn-primary"
             onClick={()=>eliminarCita(cita.id)}>Borrar &times;</button>
             
         </div>
